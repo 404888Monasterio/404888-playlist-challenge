@@ -1,0 +1,36 @@
+<h1>Nueva canción</h1>
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-12">
+    <label for="inputName" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="inputName">
+    <div class="invalid-feedback">
+      Ingrese un nombre.
+    </div>
+  </div>
+  <div class="col-md-12">
+    <label for="inputCreateAt" class="form-label">Fecha</label>
+    <input type="date" class="form-control" id="inputCreateAt">
+    <div class="invalid-feedback">
+      Seleccione una fecha.
+    </div>
+  </div>
+  <div class="col-md-12">
+    <label for="inputDuration" class="form-label">Duración</label>
+    <input type="range" class="form-range" id="inputDuration">
+    <small>1 segundos</small>
+    <div class="invalid-feedback">
+      Ingrese una duración.
+    </div>
+  </div>
+  <div class="col-md-12">
+    <label for="inputOrder" class="form-label">Orden</label>
+    <input type="number" class="form-control" id="inputOrder">
+    <div class="invalid-feedback">
+      Ingrese un orden.
+    </div>
+  </div>
+  <div class="col-12 d-flex justify-content-between">
+    <button class="btn btn-secondary" type="button">Cancelar</button>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </div>
+</form>
