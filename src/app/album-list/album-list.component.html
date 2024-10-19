@@ -1,1 +1,21 @@
-<span>album list works!</span>
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @for (album of albums; track $index) {
+        <div class="col">
+            <div class="card">
+                <img [src]="album.front" class="card-img-top" [alt]="album.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{album.name}}</h5>
+                    <p class="card-text"><small class="text-body-secondary">{{album.createdAt | date: 'MMM dd, yyyy'}}</small></p>
+                    <div class="d-flex justify-content-around">
+                        <a class="text-black" [routerLink]="[album.id, 'play']" routerLinkActive="router-link-active">
+                            <i class="bi bi-play-fill fs-4"></i>
+                        </a>
+                        <a class="text-black" [routerLink]="[album.id, 'add-song']" routerLinkActive="router-link-active" >
+                            <i class="bi bi-plus fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

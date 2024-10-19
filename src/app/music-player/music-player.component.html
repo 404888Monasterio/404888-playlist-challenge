@@ -1,1 +1,29 @@
-<span>music player works!</span>
+<div class="text-center">
+    <h1>Playing music...</h1>
+    @if (!currentSong){
+        <p class="text-black-50 fst-italic">Nothing to play here..</p>
+    }
+    @else {
+        <div class="border border-black rounded-5 my-3 px-4 py-3">
+            <div class="text-end">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <p class="text-start fw-bold">{{currentSong.name}}</p>
+            <input class="form-range" type="range" name="" id="" disabled [value]="currentSeconds" step="1" min="0" [max]="currentSong.duration">
+            <p class="text-end fw-light">Duration: {{currentSeconds}}/{{currentSong.duration}} seconds.</p>
+            <div class="d-flex justify-content-between">
+                @if (playing){
+                    <i class="bi bi-pause-fill" role="button" (click)="pauseInterval()"></i>
+                }
+                @else {
+                    <i class="bi bi-play-fill" role="button" (click)="startInterval()"></i>
+                }
+                <i class="bi bi-stop-fill" role="button" (click)="stopInterval()"></i>
+                @if (songs.length > 0) {
+                    <i class="bi bi-skip-forward-fill" role="button" (click)="nextSong()"></i>
+                }
+            </div>
+        </div>
+    }
+    <button class="btn btn-secondary w-100" [routerLink]="['/albums']" routerLinkActive="router-link-active" >Ir a albumnes</button>
+</div>

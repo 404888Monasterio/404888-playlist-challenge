@@ -1,36 +1,45 @@
 <h1>Nueva canción</h1>
-<form class="row g-3 needs-validation" novalidate>
+<form class="row g-3 needs-validation" novalidate [formGroup]="form" (submit)="post()">
   <div class="col-md-12">
     <label for="inputName" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="inputName">
+    <input type="text" class="form-control" id="inputName" 
+    formControlName="name" 
+    [ngClass]="{'is-invalid': form.controls.name.touched && form.controls.name.invalid}">
     <div class="invalid-feedback">
       Ingrese un nombre.
     </div>
   </div>
   <div class="col-md-12">
     <label for="inputCreateAt" class="form-label">Fecha</label>
-    <input type="date" class="form-control" id="inputCreateAt">
+    <input type="date" class="form-control" id="inputCreateAt"
+    formControlName="createdAt"
+    [ngClass]="{'is-invalid': form.controls.createdAt.touched && form.controls.createdAt.invalid}">
     <div class="invalid-feedback">
       Seleccione una fecha.
     </div>
   </div>
   <div class="col-md-12">
     <label for="inputDuration" class="form-label">Duración</label>
-    <input type="range" class="form-range" id="inputDuration">
-    <small>1 segundos</small>
+    <input type="range" class="form-range" id="inputDuration"
+    min="1" max="300"
+    formControlName="duration"
+    [ngClass]="{'is-invalid': form.controls.duration.touched && form.controls.duration.invalid}">
+    <small>{{form.controls.duration.value}} segundos</small>
     <div class="invalid-feedback">
       Ingrese una duración.
     </div>
   </div>
   <div class="col-md-12">
     <label for="inputOrder" class="form-label">Orden</label>
-    <input type="number" class="form-control" id="inputOrder">
+    <input type="number" class="form-control" id="inputOrder"
+    formControlName="orderIndex"
+    [ngClass]="{'is-invalid': form.controls.orderIndex.touched && form.controls.orderIndex.invalid}">
     <div class="invalid-feedback">
       Ingrese un orden.
     </div>
   </div>
   <div class="col-12 d-flex justify-content-between">
-    <button class="btn btn-secondary" type="button">Cancelar</button>
-    <button class="btn btn-primary" type="submit">Guardar</button>
+    <button class="btn btn-secondary" type="button" [routerLink]="['/albums']" routerLinkActive="router-link-active" >Cancelar</button>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Guardar</button>
   </div>
 </form>
